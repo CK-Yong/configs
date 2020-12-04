@@ -1,7 +1,5 @@
 export ZSH="/Users/cyong/.oh-my-zsh"
 
-autoload -Uz compinit && compinit
-
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 plugins=(
@@ -12,11 +10,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-
 ##########################
 ### My custom commands ###
 ##########################
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -66,3 +62,6 @@ argo-workflows(){
     open -a "Google Chrome.app" http://localhost:2746/workflows/watch &
     kubectl port-forward svc/argoworkflows-server -n argo 2746:2746 
 }
+
+### Add k8s autocomplete
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
